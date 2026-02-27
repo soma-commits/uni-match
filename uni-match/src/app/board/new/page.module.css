@@ -1,0 +1,133 @@
+.newPostPage {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.pageTitle {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-sm);
+}
+
+.pageSubtitle {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.formCard {
+    padding: var(--spacing-xl);
+}
+
+.skillSelector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+}
+
+.skillOption {
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    background: var(--color-bg-input);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.skillOption:hover {
+    border-color: var(--color-border-hover);
+}
+
+.skillOptionSelected {
+    background: rgba(108, 92, 231, 0.15);
+    border-color: rgba(108, 92, 231, 0.4);
+    color: #a29bfe;
+}
+
+.tagInput {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.tagInput input {
+    flex: 1;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-glass);
+    border: 1px solid var(--color-border);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
+.tagRemove {
+    cursor: pointer;
+    font-size: 0.9rem;
+    opacity: 0.6;
+    transition: opacity var(--transition-fast);
+}
+
+.tagRemove:hover {
+    opacity: 1;
+}
+
+.formActions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: flex-end;
+}
+
+.memberCountGroup {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.memberCountGroup .form-input {
+    max-width: 120px;
+}
+
+.successMessage {
+    padding: var(--spacing-xl);
+    text-align: center;
+}
+
+.successIcon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: var(--spacing-md);
+}
+
+.successTitle {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-sm);
+}
+
+.successDesc {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xl);
+}

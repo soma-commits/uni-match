@@ -1,0 +1,38 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (107,39)<a class='Header-module__4RDIuG__logo' href='/'>UniMatch />
+	[1] (52,39)<span >🚀 />
+[2] (337,39)<a class='Header-module__4RDIuG__navLink ' href='/board'>掲示板 />
+[3] (429,39)<a class='Header-module__4RDIuG__navLink ' href='/board/new'>投稿する />
+[4] (535,39)<a class='Header-module__4RDIuG__navLink ' href='/mypage'>マイページ />
+[5] (727,39)<a class='Header-module__4RDIuG__avatar' href='/mypage' title='田中 太郎'>🧑‍💻 />
+田中 太郎
+[6] (905,39)<button class='btn btn-ghost'>ログアウト />
+はじめるのは簡単
+4ステップで起業チームを結成
+1
+学生認証
+大学メールアドレスで簡単に登録・認証
+2
+プロフィール作成
+自分のスキルと興味分野を登録
+3
+仲間を探す
+掲示板で興味のあるプロジェクトに参加申請
+4
+チーム結成
+メンバーが揃ったらプロジェクト開始！
+500+
+登録学生数
+120+
+プロジェクト数
+50+
+連携大学数
+30+
+チーム結成数
+仲間を見つけて、今すぐ始めよう
+あなたのアイデアに足りないスキルを補えるチームメンバーが、きっと見つかります。
+
+</current_dom>

@@ -1,0 +1,55 @@
+# UniMatch — 完成ウォークスルー
+
+## 構築したもの
+学生限定の起業マッチング掲示板「**UniMatch**」を Next.js (App Router + TypeScript) で構築しました。
+
+## ページ構成
+
+| ページ | パス | 状態 |
+|---|---|---|
+| ランディング | `/` | ✅ |
+| ログイン | `/login` | ✅ |
+| 掲示板一覧 | `/board` | ✅ |
+| 投稿作成 | `/board/new` | ✅ |
+| 投稿詳細 | `/board/[id]` | ✅ |
+| プロフィール | `/profile/[id]` | ✅ |
+| マイページ | `/mypage` | ✅ |
+
+## 動作確認結果
+
+### ランディングページ
+![ランディングページ](C:/Users/sohor/.gemini/antigravity/brain/090abc22-9744-44db-9ad4-5e1148d1e843/landing_hero_1772183712945.png)
+
+### 掲示板一覧
+![掲示板一覧](C:/Users/sohor/.gemini/antigravity/brain/090abc22-9744-44db-9ad4-5e1148d1e843/board_page_1772183780876.png)
+
+### 投稿詳細
+![投稿詳細](C:/Users/sohor/.gemini/antigravity/brain/090abc22-9744-44db-9ad4-5e1148d1e843/post_detail_page_1772183852871.png)
+
+### マイページ
+![マイページ](C:/Users/sohor/.gemini/antigravity/brain/090abc22-9744-44db-9ad4-5e1148d1e843/mypage_1772183866956.png)
+
+## アプリ操作デモ
+
+![UniMatch操作デモ](C:/Users/sohor/.gemini/antigravity/brain/090abc22-9744-44db-9ad4-5e1148d1e843/full_app_walkthrough_1772183687741.webp)
+
+## 起動方法
+
+```bash
+cd uni-match
+npm run dev
+```
+
+http://localhost:3000 でアクセス可能です。
+
+## 主な機能
+- **学生認証**: `.ac.jp` ドメインチェック + デモユーザーでのクイックログイン
+- **掲示板**: キーワード検索、カテゴリフィルタ、スキルカテゴリフィルタ、ソート機能
+- **投稿作成**: タイトル、詳細、カテゴリ、求めるスキル、タグ、募集人数の入力
+- **チーム参加申請**: 投稿詳細からワンクリックで参加申請
+- **マイページ**: 自分の投稿・統計の管理
+
+## 次のステップ
+- Supabase接続による永続化
+- リアルタイムチャット機能
+- メール認証の実装

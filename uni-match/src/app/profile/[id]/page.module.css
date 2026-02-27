@@ -1,0 +1,139 @@
+.profilePage {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xl);
+    transition: color var(--transition-fast);
+}
+
+.backLink:hover {
+    color: var(--color-text-primary);
+}
+
+.profileCard {
+    padding: var(--spacing-2xl);
+    margin-bottom: var(--spacing-xl);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.profileHeader {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-full);
+    background: var(--color-accent-gradient-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    border: 3px solid var(--color-border);
+    flex-shrink: 0;
+}
+
+.profileInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.name {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+}
+
+.university {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+}
+
+.year {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+}
+
+.section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.sectionTitle {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.bio {
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.postsCard {
+    padding: var(--spacing-xl);
+    animation: fadeInUp 0.5s ease 0.1s forwards;
+}
+
+.postItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    transition: background var(--transition-fast);
+    gap: var(--spacing-md);
+}
+
+.postItem:hover {
+    background: var(--color-bg-glass);
+}
+
+.postItemTitle {
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
+}
+
+.postItemMeta {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    white-space: nowrap;
+}
+
+.emptyPosts {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+}
+
+.notFound {
+    text-align: center;
+    padding: var(--spacing-3xl);
+    color: var(--color-text-muted);
+}
+
+.notFoundIcon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: var(--spacing-md);
+}

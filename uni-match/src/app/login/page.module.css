@@ -1,0 +1,123 @@
+.loginPage {
+    min-height: calc(100vh - var(--header-height));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl);
+    position: relative;
+}
+
+.loginCard {
+    width: 100%;
+    max-width: 460px;
+    padding: var(--spacing-2xl);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.loginTitle {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    text-align: center;
+    margin-bottom: var(--spacing-xs);
+}
+
+.loginSubtitle {
+    text-align: center;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.hint {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    margin-top: 2px;
+}
+
+.errorMsg {
+    font-size: var(--font-size-xs);
+    color: var(--color-danger);
+    margin-top: 2px;
+}
+
+.submitBtn {
+    width: 100%;
+    margin-top: var(--spacing-sm);
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-xs);
+    margin: var(--spacing-md) 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--color-border);
+}
+
+.demoSection {
+    text-align: center;
+}
+
+.demoTitle {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.demoUsers {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.demoUserBtn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: 0.75rem 1rem;
+    width: 100%;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-input);
+    border: 1px solid var(--color-border);
+    text-align: left;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.demoUserBtn:hover {
+    background: var(--color-bg-glass-hover);
+    border-color: var(--color-accent-primary);
+}
+
+.demoAvatar {
+    font-size: 1.5rem;
+}
+
+.demoInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.demoName {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+}
+
+.demoUni {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+}

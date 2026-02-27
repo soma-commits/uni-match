@@ -1,0 +1,94 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (107,39)<a class='Header-module__4RDIuG__logo' href='/'>UniMatch />
+	[1] (52,39)<span >🚀 />
+[2] (337,39)<a class='Header-module__4RDIuG__navLink Header-module__4RDIuG__navLinkActive' href='/board'>掲示板 />
+[3] (429,39)<a class='Header-module__4RDIuG__navLink ' href='/board/new'>投稿する />
+[4] (535,39)<a class='Header-module__4RDIuG__navLink ' href='/mypage'>マイページ />
+[5] (727,39)<a class='Header-module__4RDIuG__avatar' href='/mypage' title='田中 太郎'>🧑‍💻 />
+田中 太郎
+[6] (905,39)<button class='btn btn-ghost'>ログアウト />
+🚀 プロジェクト掲示板
+仲間を募集中のプロジェクト一覧
+[7] (909,171)<a class='btn btn-primary' href='/board/new'>＋ 新規投稿 />
+🔍
+[8] (162,272)<input class='page-module__RlnMwG__searchInput' placeholder='キーワードで検索...' />
+[9] (755,272)<select class='page-module__RlnMwG__filterSelect' />
+[10] (920,272)<select class='page-module__RlnMwG__filterSelect' />
+[11] (61,352)<button class='page-module__RlnMwG__skillFilterBtn page-module__RlnMwG__skillFilterBtnActive'>すべて />
+[12] (172,352)<button class='page-module__RlnMwG__skillFilterBtn '>エンジニアリング />
+[13] (290,352)<button class='page-module__RlnMwG__skillFilterBtn '>デザイン />
+[14] (383,352)<button class='page-module__RlnMwG__skillFilterBtn '>ビジネス />
+[15] (494,352)<button class='page-module__RlnMwG__skillFilterBtn '>マーケティング />
+[16] (612,352)<button class='page-module__RlnMwG__skillFilterBtn '>データ分析 />
+[17] (705,352)<button class='page-module__RlnMwG__skillFilterBtn '>その他 />
+[18] (256,585)<a class='page-module__RlnMwG__postCard glass-card' href='/board/post-1' />
+	[19] (256,447)<div  />
+		[20] (95,447)<span >EdTech />
+		[21] (414,447)<span >2026-02-25 />
+	[22] (256,503)<h3 >AIを活用した学生向け学習管理アプリの開発メンバー募集 />
+	[23] (256,580)<p >学生の学習効率を最大化するAI搭載アプリを開発しています。ユーザーの学習パターンを分析し、最適な学習計画を自動生成するサービスです。
+
+現在、バックエンド開発とUI/UXデザインを担当してくれるメンバーを探しています。週に2-3回のオンラインMTGを予定しています。
+
+すでにMVPのプロトタイプは完成しており、ユーザーテストのフィードバックを元に改善フェーズに入っています。 />
+	[24] (256,650)<div  />
+		[25] (97,650)<span >Python />
+		[26] (179,650)<span >機械学習 />
+		[27] (284,650)<span >UI/UXデザイン />
+	[28] (256,710)<div  />
+		[29] (113,720)<div  />
+			[30] (76,720)<span >🧑‍💻 />
+			[31] (132,720)<span >田中 太郎 />
+		[32] (408,720)<div  />
+			[33] (384,720)<span >👥
+2
+/
+5 />
+			[34] (437,720)<span >💬
+5 />
+[35] (744,585)<a class='page-module__RlnMwG__postCard glass-card' href='/board/post-2' />
+	[36] (744,447)<div  />
+		[37] (598,447)<span >フードテック />
+		[38] (901,447)<span >2026-02-24 />
+	[39] (744,503)<h3 >大学生向けフードデリバリーサービスの共同創業者募集 />
+	[40] (744,580)<p >大学キャンパス周辺に特化したフードデリバリーサービスを立ち上げます。既存のデリバリーサービスと異なり、地元の学生食堂や隠れた名店を届けるコンセプトです。
+
+エンジニアとマーケティング担当を募集しています。すでに3つの大学で市場調査を完了し、ビジネスモデルは構築済みです。
+
+起業に本気の方、一緒にやりませんか？ />
+	[41] (744,650)<div  />
+		[42] (580,650)<span >React />
+		[43] (656,650)<span >Node.js />
+		[44] (772,650)<span >SNSマーケティング />
+	[45] (744,710)<div  />
+		[46] (600,720)<div  />
+			[47] (563,720)<span >👩‍💼 />
+			[48] (619,720)<span >佐藤 花子 />
+		[49] (896,720)<div  />
+			[50] (872,720)<span >👥
+1
+/
+4 />
+			[51] (924,720)<span >💬
+8 />
+[52] (256,988)<a class='page-module__RlnMwG__postCard glass-card' href='/board/post-3' />
+	[53] (256,850)<div  />
+		[54] (98,850)<span >HR Tech />
+		[55] (414,850)<span >2026-02-23 />
+	[56] (256,906)<h3 >学生の就活をAIで革新！マッチングプラットフォーム開発 />
+	[57] (256,983)<p >従来の就職活動の非効率さを解消する、AI駆動の就活マッチングプラットフォームを開発中。学生のスキルと企業の求める人材を高精度でマッチングします。
+
+フロントエンドエンジニアとデータサイエンティストを募集。特にReactとPythonに精通した方を歓迎します。 />
+[58] (744,988)<a class='page-module__RlnMwG__postCard glass-card' href='/board/post-4' />
+	[59] (744,850)<div  />
+		[60] (613,850)<span >EC・ファッション />
+		[61] (901,850)<span >2026-02-22 />
+	[62] (744,906)<h3 >サステナブルファッションのECプラットフォーム構築 />
+	[63] (744,983)<p >学生が手軽にサステナブルなファッションを楽しめるECプラットフォームを作ります。古着のリメイクやシェアリングを通じて、環境に優しいファッション文化を広めたい。
+
+デザイナー、エンジニア、ビジネス面をサポートしてくれる方を幅広く募集中！ />
+
+</current_dom>

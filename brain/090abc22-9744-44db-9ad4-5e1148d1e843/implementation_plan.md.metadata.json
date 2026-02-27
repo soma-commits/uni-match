@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Supabase統合の実装計画。DBスキーマ（users, posts, skills, applicationsテーブル）、RLSポリシー、Supabase Authによる学生メール認証、Supabaseクライアントセットアップ、各ページのLocalStorageからSupabaseへの移行、リアルタイムチャット機能の実装を含む。",
+  "updatedAt":  "2026-02-27T09:24:48.147997200Z",
+  "version":  "1"
+}

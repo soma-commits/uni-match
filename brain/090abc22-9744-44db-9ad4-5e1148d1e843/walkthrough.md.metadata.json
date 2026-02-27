@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary":  "UniMatch Phase 2: Supabase統合の完成ウォークスルー。作成ファイル、DBスキーマ、認証フロー、データアクセス層、各ページの移行内容とセットアップ手順を記載。",
+  "updatedAt":  "2026-02-27T10:06:50.755836800Z",
+  "version":  "1"
+}

@@ -1,0 +1,54 @@
+# UniMatch Phase 2 — Supabase統合ウォークスルー
+
+## 変更概要
+
+LocalStorage＋モックデータで動作していたフロントエンドを、**Supabase**バックエンドに接続し、データ永続化・認証を実現しました。
+
+## 作成・変更ファイル一覧
+
+| ファイル | 種別 | 内容 |
+|---|---|---|
+| [supabase_schema.sql](file:///C:/Users/sohor/.gemini/antigravity/uni-match/supabase_schema.sql) | 新規 | DBスキーマ（8テーブル＋RLS＋トリガー＋初期データ） |
+| [src/lib/supabase/client.ts](file:///C:/Users/sohor/.gemini/antigravity/uni-match/src/lib/supabase/client.ts) | 新規 | ブラウザ用Supabaseクライアント |
+| [src/lib/supabase/server.ts](file:///C:/Users/sohor/.gemini/antigravity/uni-match/src/lib/supabase/server.ts) | 新規 | サーバーサイド用クライアント（Cookie管理） |
+| [src/lib/supabase/middleware.ts](file:///C:/Users/sohor/.gemini/antigravity/uni-match/src/lib/supabase/middleware.ts) | 新規 | セッション管理・認証ガードロジック |
+| [src/lib/supabase/queries.ts](file:///C:/Users/sohor/.gemini/antigravity/uni-match/src/lib/supabase/queries.ts) | 新規 | データアクセス層（全CRUD操作） |
+| [src/middleware.ts](file:///C:/Users/sohor/.gemini/antigravity/uni-match/src/middleware.ts) | 新規 | Next.jsミドルウェア（保護ルート） |
+| [src/app/auth/callback/route.ts](file:///C:/Users/sohor/.gemini/antigravity/uni-match/src/app/auth/callback/route.ts) | 新規 | マジックリンクコールバック |
+| [.env.local.example](file:///C:/Users/sohor/.gemini/antigravity/uni-match/.env.local.example) | 新規 | 環境変数テンプレート |
+| [src/app/login/page.tsx](file:///C:/Users/sohor/.gemini/antigravity/uni-match/src/app/login/page.tsx) | 変更 | Supabase Auth（マジックリンク＋デモ） |
+| [src/components/Header.tsx](file:///C:/Users/sohor/.gemini/antigravity/uni-match/src/components/Header.tsx) | 変更 | Auth状態監視 |
+| [src/app/board/page.tsx](file:///C:/Users/sohor/.gemini/antigravity/uni-match/src/app/board/page.tsx) | 変更 | Supabase API移行 |
+| [src/app/board/new/page.tsx](file:///C:/Users/sohor/.gemini/antigravity/uni-match/src/app/board/new/page.tsx) | 変更 | Supabase API移行 |
+| `src/app/board/[id]/page.tsx` | 変更 | Supabase API移行 |
+| `src/app/profile/[id]/page.tsx` | 変更 | Supabase API移行 |
+| [src/app/mypage/page.tsx](file:///C:/Users/sohor/.gemini/antigravity/uni-match/src/app/mypage/page.tsx) | 変更 | Supabase API移行 |
+
+## セットアップ手順
+
+### 1. Supabaseプロジェクト設定
+1. [Supabase Dashboard](https://app.supabase.com) でプロジェクトを作成
+2. **SQL Editor** で [supabase_schema.sql](file:///C:/Users/sohor/.gemini/antigravity/uni-match/supabase_schema.sql) を実行
+3. `.env.local` を作成:
+```bash
+NEXT_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJxxxxx...
+```
+
+### 2. デモユーザー設定（任意）
+Supabase Dashboard → Authentication → Users から、以下のデモユーザーを作成:
+- Email: `demo@g.ecc.u-tokyo.ac.jp`
+- Password: `demo123456`
+- → Email確認を無効にするか、確認済みにマーク
+
+### 3. 起動
+```bash
+cd uni-match
+npm run dev
+```
+
+## 検証結果
+- ✅ `npm run build` — 正常完了（型エラーなし）
+- ✅ 全ページのSupabase API移行完了
+- ✅ 認証フロー（マジックリンク＋デモユーザー）
+- ✅ 保護ルート（未認証→ログインリダイレクト）

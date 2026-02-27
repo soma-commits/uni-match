@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Plan for the initial project setup, including tech stack choices (Supabase for all backend services) and folder structure.",
+  "updatedAt":  "2026-01-09T16:40:15.029129700Z"
+}

@@ -1,0 +1,235 @@
+.detailPage {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xl);
+    transition: color var(--transition-fast);
+}
+
+.backLink:hover {
+    color: var(--color-text-primary);
+}
+
+.mainCard {
+    padding: var(--spacing-2xl);
+    margin-bottom: var(--spacing-xl);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.categoryBadge {
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    background: var(--color-accent-gradient-soft);
+    color: #a29bfe;
+}
+
+.statusBadge {
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+}
+
+.statusRecruiting {
+    background: rgba(0, 184, 148, 0.15);
+    color: var(--color-success);
+    border: 1px solid rgba(0, 184, 148, 0.3);
+}
+
+.title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--spacing-lg);
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-border);
+    flex-wrap: wrap;
+}
+
+.metaItem {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.description {
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    white-space: pre-line;
+    margin-bottom: var(--spacing-xl);
+}
+
+.section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.sectionTitle {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-md);
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.tag {
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    background: var(--color-bg-glass);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+}
+
+/* Author Card */
+.authorCard {
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    animation: fadeInUp 0.5s ease 0.1s forwards;
+}
+
+.authorHeader {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.authorAvatar {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-full);
+    background: var(--color-accent-gradient-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    border: 2px solid var(--color-border);
+}
+
+.authorInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.authorName {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+}
+
+.authorUni {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.authorBio {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+}
+
+/* Apply Section */
+.applySection {
+    padding: var(--spacing-xl);
+    text-align: center;
+    animation: fadeInUp 0.5s ease 0.2s forwards;
+}
+
+.applyTitle {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-sm);
+}
+
+.applyDesc {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+.memberProgress {
+    margin-bottom: var(--spacing-lg);
+}
+
+.progressBar {
+    height: 6px;
+    background: var(--color-bg-input);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: var(--spacing-sm);
+}
+
+.progressFill {
+    height: 100%;
+    background: var(--color-accent-gradient);
+    border-radius: 3px;
+    transition: width var(--transition-slow);
+}
+
+.progressLabel {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    text-align: left;
+}
+
+.appliedMessage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    background: rgba(0, 184, 148, 0.1);
+    color: var(--color-success);
+    font-weight: var(--font-weight-medium);
+}
+
+.notFound {
+    text-align: center;
+    padding: var(--spacing-3xl);
+    color: var(--color-text-muted);
+}
+
+.notFoundIcon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: var(--spacing-md);
+}
