@@ -244,7 +244,7 @@ create policy "Team members can send messages"
   );
 
 -- Realtimeを有効化
-alter publication supabase_realtime add table public.messages;
+-- alter publication supabase_realtime add table public.messages;
 
 -- ============================================================
 -- 9. トリガー: 新規ユーザー作成時にプロフィール自動作成
@@ -262,9 +262,9 @@ begin
 end;
 $$ language plpgsql security definer;
 
-create trigger on_auth_user_created
-  after insert on auth.users
-  for each row execute procedure public.handle_new_user();
+-- create trigger on_auth_user_created
+--   after insert on auth.users
+--   for each row execute procedure public.handle_new_user();
 
 -- ============================================================
 -- 10. 初期スキルデータ
@@ -291,4 +291,69 @@ insert into public.skills (name, category) values
   ('機械学習', 'data'),
   ('データ分析', 'data'),
   ('プロジェクト管理', 'other'),
-  ('プレゼン', 'other');
+  ('プレゼン', 'other')
+on conflict (name) do nothing;
+
+-- ============================================================
+-- 11. notifications — 通知
+-- ============================================================
+create table if not exists public.notifications (
+  id uuid primary key default uuid_generate_v4(),
+  user_id uuid references public.profiles(id) on delete cascade not null,
+  type text not null,
+  title text not null,
+  message text not null,
+  link text not null,
+  is_read boolean not null default false,
+  created_at timestamptz not null default now()
+);
+
+alter table public.notifications enable row level security;
+
+-- 本人のみ閲覧・更新可
+do $$
+begin
+  if not exists (select 1 from pg_policies where policyname = 'Users can view own notifications') then
+    create policy "Users can view own notifications" on public.notifications for select using (auth.uid() = user_id);
+  end if;
+  if not exists (select 1 from pg_policies where policyname = 'Users can update own notifications') then
+    create policy "Users can update own notifications" on public.notifications for update using (auth.uid() = user_id);
+  end if;
+  if not exists (select 1 from pg_policies where policyname = 'Authenticated users can insert notifications') then
+    create policy "Authenticated users can insert notifications" on public.notifications for insert with check (auth.role() = 'authenticated');
+  end if;
+end
+$$;
+
+-- ============================================================
+-- 12. post_comments — 掲示板のコメント（ツリー形式）
+-- ============================================================
+create table if not exists public.post_comments (
+  id uuid primary key default uuid_generate_v4(),
+  post_id uuid references public.posts(id) on delete cascade not null,
+  author_id uuid references public.profiles(id) on delete cascade not null,
+  parent_id uuid references public.post_comments(id) on delete cascade,
+  content text not null,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+alter table public.post_comments enable row level security;
+
+-- 全員が読める/投稿可/削除可
+do $$
+begin
+  if not exists (select 1 from pg_policies where policyname = 'Post comments are viewable by everyone') then
+    create policy "Post comments are viewable by everyone" on public.post_comments for select using (true);
+  end if;
+  if not exists (select 1 from pg_policies where policyname = 'Authenticated users can post comments') then
+    create policy "Authenticated users can post comments" on public.post_comments for insert with check (auth.uid() = author_id);
+  end if;
+  if not exists (select 1 from pg_policies where policyname = 'Authors or post owners can delete comments') then
+    create policy "Authors or post owners can delete comments" on public.post_comments for delete using (
+      auth.uid() = author_id or
+      exists (select 1 from public.posts where id = post_id and author_id = auth.uid())
+    );
+  end if;
+end
+$$;

@@ -30,7 +30,6 @@
     color: var(--color-text-secondary);
 }
 
-
 .threadContainer {
     display: flex;
     flex-direction: column;
@@ -54,17 +53,12 @@
 .threadLine {
     position: absolute;
     left: -22px;
-    /* 親のアバター中心から垂直に降ろす（親のインデント-40px + アバター中心18px） */
     top: -24px;
     bottom: calc(100% - 32px);
     width: 14px;
-    /* 横に伸ばす長さ。14px伸ばすと左端から-8pxの位置で止まり、アイコンに干渉しない */
-
     border-left: 2px solid var(--color-accent-primary);
     border-bottom: 2px solid var(--color-accent-primary);
     border-bottom-left-radius: 8px;
-    /* L字の角を丸くする */
-
     background: transparent;
     transition: border-color var(--transition-fast);
 }
@@ -134,8 +128,6 @@
     color: var(--color-text-secondary);
 }
 
-
-
 .commentBody {
     line-height: 1.6;
     font-size: var(--font-size-sm);
@@ -144,27 +136,24 @@
     word-break: break-word;
 }
 
-
-
 .fixedInputBar {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 360px;
-    /* 右サイドバー幅を回避 */
-    margin: 0;
     padding: var(--spacing-md) var(--spacing-xl);
+    padding-bottom: calc(var(--spacing-md) + env(safe-area-inset-bottom, 0px));
     background: var(--color-bg-primary);
-    /* 不透明 */
     border-top: 1px solid var(--color-border);
-    z-index: 50;
+    z-index: 100;
+    /* Sidebar (1100) や Modal (1200) より低く設定 */
 }
 
 @media (max-width: 960px) {
     .fixedInputBar {
         right: 0;
-        /* モバイル幅では全画面 */
         padding: var(--spacing-md) var(--spacing-lg);
+        padding-bottom: calc(var(--spacing-md) + env(safe-area-inset-bottom, 0px));
     }
 }
 
@@ -263,7 +252,8 @@
 /* Custom Context Menu */
 .contextMenu {
     position: fixed;
-    z-index: 1000;
+    z-index: 1500;
+    /* 全ての要素（Sidebar, Modal, InputBar）の最前面に表示 */
     background: rgba(20, 20, 30, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-md);

@@ -62,7 +62,8 @@
     flex: 1;
     overflow-y: auto;
     padding: var(--spacing-xl);
-    padding-bottom: 140px;
+    padding-bottom: 240px;
+    /* 入力バーを余裕を持って避ける */
     scroll-behavior: smooth;
     max-width: 900px;
     margin: 0 auto;
@@ -115,7 +116,8 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    z-index: 20;
+    z-index: 1100;
+    /* 入力バー(100)よりも上に表示 */
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
 }
@@ -167,7 +169,8 @@
     bottom: 0;
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(3px);
-    z-index: 15;
+    z-index: 1050;
+    /* 入力バー(100)より高く、サイドバー(1100)より低く */
     animation: fadeIn 0.2s ease;
 }
 
@@ -203,7 +206,8 @@
 
     .threadArea {
         padding: var(--spacing-lg);
-        padding-bottom: 140px;
+        padding-bottom: 240px;
+        /* 入力バーを余裕を持って避ける */
     }
 }
 
@@ -451,7 +455,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+    z-index: 1200;
+    /* サイドバー(1100)や入力バー(100)よりも上 */
 }
 
 .modalCard {
