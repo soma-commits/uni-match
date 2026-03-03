@@ -1,0 +1,6 @@
+# Verification Plan
+
+- [ ] Login as demo user
+- [ ] Verify notification bell in header
+- [ ] Verify post detail page (apply message / edit & delete buttons)
+- [ ] Verify post edit page

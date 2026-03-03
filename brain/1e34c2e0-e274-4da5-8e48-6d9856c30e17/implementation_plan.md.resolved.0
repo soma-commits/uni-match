@@ -1,0 +1,61 @@
+# チーム内リアルタイムチャット機能の実装
+
+DBテーブル `messages` とバックエンド関数（[getMessages](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/lib/supabase/queries.ts#381-400), [sendMessage](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/lib/supabase/queries.ts#401-417)）は実装済み。Supabase Realtime も有効化済み。フロントエンドのチャットUI を新規作成する。
+
+## Proposed Changes
+
+### チャットページ（新規）
+
+#### [NEW] [page.tsx](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/app/board/[id]/chat/page.tsx)
+
+チャット画面のメインコンポーネント。以下の機能を含む:
+
+- **メッセージ一覧表示**: [getMessages(postId)](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/lib/supabase/queries.ts#381-400) で既存メッセージを取得し、時系列で表示
+- **リアルタイム受信**: Supabase Realtime の `channel.on('postgres_changes', ...)` で `messages` テーブルの INSERT を監視し、新メッセージを即座に反映
+- **メッセージ送信フォーム**: テキスト入力 + 送信ボタン。Enter キーでも送信可能（Shift+Enter は改行）
+- **自動スクロール**: 新メッセージ着信時にチャット最下部へ自動スクロール
+- **送信者の表示分け**: 自分のメッセージは右寄せ（アクセント色）、他人のメッセージは左寄せ（グレー系）
+- **未認証ユーザーのリダイレクト**: ログインしていない場合は `/login` にリダイレクト
+- **投稿タイトルのヘッダー**: どのプロジェクトのチャットかわかるように投稿タイトルを表示
+
+---
+
+#### [NEW] [page.module.css](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/app/board/[id]/chat/page.module.css)
+
+既存デザインシステム（CSS変数、`glass-card` クラス等）に準拠したスタイリング:
+
+- チャットコンテナ: `100vh - header` のフルハイトレイアウト
+- メッセージバブル: 自分（右・紫グラデーション）/ 相手（左・ガラスモーフィズム）
+- 送信者アバター・名前の表示
+- タイムスタンプ表示
+- 入力エリア: 下部固定、ガラスモーフィズム背景
+- フェードインアニメーション
+
+---
+
+### 投稿詳細ページ（既存修正）
+
+#### [MODIFY] [page.tsx](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/app/board/[id]/page.tsx)
+
+投稿詳細ページの Apply Section の下に「💬 チームチャット」ボタンを追加。`/board/[id]/chat` へのリンク。
+
+#### [MODIFY] [page.module.css](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/app/board/[id]/page.module.css)
+
+チャットリンクボタン用のスタイルを追加。
+
+---
+
+## Verification Plan
+
+### ビルド確認
+```bash
+cd c:\Users\sohor\.gemini\antigravity\uni-match && npm run build
+```
+ビルドエラーがないことを確認。
+
+### ブラウザ検証
+1. `npm run dev` でローカルサーバーを起動
+2. ブラウザで `/board` → 任意の投稿詳細ページを開く
+3. 「💬 チームチャット」ボタンが表示されていることを確認
+4. ボタンをクリックしてチャットページに遷移することを確認
+5. チャットUIが正しく表示されることを確認（ヘッダー、メッセージエリア、入力フォーム）

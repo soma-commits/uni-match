@@ -1,0 +1,54 @@
+# 申請管理画面（投稿者側）
+
+投稿者が自分のプロジェクトへの参加申請を確認し、承認/拒否を行う画面を実装する。
+
+## Proposed Changes
+
+### バックエンド（queries.ts）
+
+#### [MODIFY] [queries.ts](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/lib/supabase/queries.ts)
+
+`updateApplicationStatus()` 関数を追加:
+- 引数: `applicationId`, `status ('accepted' | 'rejected')`
+- 投稿者のみ更新可（RLSポリシーで制御済み）
+- 承認時に `posts.current_members` をインクリメント
+
+---
+
+### 申請管理ページ（新規）
+
+#### [NEW] [page.tsx](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/app/board/[id]/applications/page.tsx)
+
+- [getPostApplications(postId)](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/lib/supabase/queries.ts#348-376) で申請一覧を取得
+- 各申請カードに申請者のプロフィール（アバター、名前、大学、スキル）とメッセージを表示
+- ステータスバッジ: 審査中（黄）、承認済（緑）、拒否（赤）
+- 承認/拒否ボタン（pending 状態の申請のみ）
+- 投稿者以外がアクセスした場合は掲示板にリダイレクト
+
+#### [NEW] [page.module.css](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/app/board/[id]/applications/page.module.css)
+
+既存デザインシステムに準拠。ガラスカード、スキルタグ、ステータスバッジ等。
+
+---
+
+### 投稿詳細ページ（既存修正）
+
+#### [MODIFY] [page.tsx](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/app/board/[id]/page.tsx)
+
+投稿者が自分の投稿を閲覧している場合のみ「📋 申請管理」リンクセクションを表示。現在のログインユーザーと `post.author.id` を比較して表示制御。
+
+#### [MODIFY] [page.module.css](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/app/board/[id]/page.module.css)
+
+申請管理リンク用スタイル追加。
+
+## Verification Plan
+
+### ビルド確認
+```bash
+npm run build
+```
+
+### ブラウザ検証
+1. デモユーザーでログイン → 自分の投稿詳細ページで「📋 申請管理」リンクが表示されることを確認
+2. 他人の投稿詳細ページでは「📋 申請管理」リンクが非表示であることを確認
+3. 申請管理ページで申請一覧が表示されることを確認

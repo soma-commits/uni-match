@@ -1,0 +1,23 @@
+[0] (128,43)<a class='Header-module__4RDIuG__logo' href='/'>UniMatch />
+	[1] (62,43)<span >🚀 />
+[2] (290,43)<a class='Header-module__4RDIuG__navLink ' href='/board'>掲示板 />
+[3] (400,43)<a class='Header-module__4RDIuG__navLink ' href='/board/new'>投稿する />
+[4] (527,43)<a class='Header-module__4RDIuG__navLink ' href='/mypage'>マイページ />
+[5] (643,43)<a class='Header-module__4RDIuG__avatar' href='/mypage' title='デモユーザー'>🧑‍💻 />
+デモユーザー
+[6] (887,43)<button class='btn btn-ghost'>ログアウト />
+🎓 ログイン
+学生メールアドレスで認証してください
+[7] (500,355)<label class='form-label'>メールアドレス />
+[8] (500,410)<input class='form-input' id='email' placeholder='taro@g.ecc.u-tokyo.ac.jp' />
+大学発行のメールアドレス（.ac.jp等）をご使用ください
+[9] (500,543)<button class='btn btn-primary page-module__ekpgUW__submitBtn'>マジックリンクを送信 → />
+または
+[10] (500,662)<button class='page-module__ekpgUW__googleBtn'>Googleでログイン />
+または
+デモユーザーでお試し
+[11] (500,841)<button class='page-module__ekpgUW__demoUserBtn' />
+	[12] (311,841)<span >🧑‍💻 />
+	[13] (460,841)<div  />
+		[14] (460,829)<span >デモユーザー />
+		[15] (460,855)<span >ワンクリックですぐにログイン />

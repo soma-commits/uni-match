@@ -1,0 +1,36 @@
+[0] (128,43)<a class='Header-module__4RDIuG__logo' href='/'>UniMatch />
+	[1] (62,43)<span >🚀 />
+[2] (290,43)<a class='Header-module__4RDIuG__navLink ' href='/board'>掲示板 />
+[3] (400,43)<a class='Header-module__4RDIuG__navLink ' href='/board/new'>投稿する />
+[4] (527,43)<a class='Header-module__4RDIuG__navLink Header-module__4RDIuG__navLinkActive' href='/mypage'>マイページ />
+[5] (643,43)<a class='Header-module__4RDIuG__avatar' href='/mypage' title='デモユーザー'>🧑‍💻 />
+デモユーザー
+[6] (887,43)<button class='btn btn-ghost'>ログアウト />
+📊 マイページ
+[7] (891,176)<a class='btn btn-primary' href='/board/new'>＋ 新規投稿 />
+🧑‍💻
+デモユーザー
+1
+年
+[8] (808,349)<a class='btn btn-secondary' href='/mypage/edit'>✏️ プロフィール編集 />
+3
+投稿数
+2
+受けた応募数
+0
+登録スキル数
+[9] (116,669)<button class='page-module__RQd9Nq__tabBtn '>📋 自分の投稿 />
+[10] (306,669)<button class='page-module__RQd9Nq__tabBtn page-module__RQd9Nq__tabBtnActive'>🙋 応募した投稿 />
+[11] (500,807)<a class='page-module__RQd9Nq__postItem glass-card' href='/board/60ac6244-605a-4854-b976-67050421d187' />
+	[12] (500,807)<div  />
+		[13] (500,790)<div  />
+			[14] (125,790)<span >金魚会社設立 />
+			[15] (887,790)<span >✅ 承認済 />
+		[16] (500,828)<div  />
+			[17] (137,828)<span >📅 応募日:
+2026/3/2 />
+[18] (500,936)<div  />
+	[19] (73,936)<span >あ />
+	[20] (887,936)<span >✅ 承認済 />
+[21] (142,974)<span >📅 応募日:
+2026/2/28 />

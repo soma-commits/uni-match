@@ -1,0 +1,21 @@
+# 申請一覧表示 + 投稿「募集終了」切り替え — 実装完了
+
+## 変更内容
+
+| ファイル | 操作 | 内容 |
+|---------|------|------|
+| [queries.ts](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/lib/supabase/queries.ts) | 修正 | [updatePostStatus()](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/lib/supabase/queries.ts#208-222) 関数を追加 |
+| [board/[id]/page.tsx](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/app/board/[id]/page.tsx) | 修正 | 動的ステータスバッジ + 投稿者限定「募集終了/再開」ボタン |
+| [board/[id]/page.module.css](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/app/board/[id]/page.module.css) | 修正 | `statusClosed` CSSクラス追加 |
+| [mypage/page.tsx](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/app/mypage/page.tsx) | 修正 | 申請一覧にステータスバッジ（色分け）追加 |
+| [mypage/page.module.css](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/app/mypage/page.module.css) | 修正 | バッジCSS（審査中:黄、承認済:緑、不承認:赤）追加 |
+
+## 検証結果
+
+````carousel
+![投稿詳細ページ — 募集終了状態（ステータスバッジ・再開ボタン）](C:/Users/sohor/.gemini/antigravity/brain/1e34c2e0-e274-4da5-8e48-6d9856c30e17/post_detail_closed_1772465760991.png)
+<!-- slide -->
+![マイページ — 応募した投稿タブ（承認済バッジ付き）](C:/Users/sohor/.gemini/antigravity/brain/1e34c2e0-e274-4da5-8e48-6d9856c30e17/mypage_applications_1772465777214.png)
+````
+
+![ブラウザ操作の録画](C:/Users/sohor/.gemini/antigravity/brain/1e34c2e0-e274-4da5-8e48-6d9856c30e17/status_toggle_verify_1772465705716.webp)

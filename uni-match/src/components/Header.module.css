@@ -81,23 +81,181 @@
     color: var(--color-text-secondary);
 }
 
+/* ===== Mobile Menu Button ===== */
 .mobileMenuBtn {
     display: none;
     flex-direction: column;
-    gap: 4px;
+    gap: 5px;
     padding: 8px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    z-index: 110;
 }
 
 .mobileMenuBtn span {
-    width: 20px;
+    width: 22px;
     height: 2px;
     background: var(--color-text-secondary);
-    border-radius: 1px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.mobileMenuBtnOpen span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+    background: var(--color-text-primary);
+}
+
+.mobileMenuBtnOpen span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobileMenuBtnOpen span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+    background: var(--color-text-primary);
+}
+
+/* ===== Mobile Overlay ===== */
+.mobileOverlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 98;
+}
+
+/* ===== Mobile Menu Panel ===== */
+.mobileMenu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    height: 100dvh;
+    background: rgba(15, 15, 25, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-left: 1px solid var(--color-border);
+    z-index: 99;
+    flex-direction: column;
+    padding: calc(var(--header-height) + var(--spacing-lg)) var(--spacing-lg) var(--spacing-lg);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.mobileMenuOpen {
+    transform: translateX(0);
+}
+
+.mobileNav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.mobileNavLink {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: 0.85rem var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
     transition: all var(--transition-fast);
 }
 
+.mobileNavLink:hover {
+    color: var(--color-text-primary);
+    background: var(--color-bg-glass);
+}
+
+.mobileNavLinkActive {
+    color: var(--color-text-primary);
+    background: var(--color-bg-glass);
+    border-left: 3px solid var(--color-accent-primary);
+}
+
+.mobileNavIcon {
+    font-size: 1.1rem;
+    width: 24px;
+    text-align: center;
+}
+
+/* ===== Mobile Menu Footer ===== */
+.mobileMenuFooter {
+    margin-top: auto;
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.mobileUserInfo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-md);
+    transition: background var(--transition-fast);
+}
+
+.mobileUserInfo:hover {
+    background: var(--color-bg-glass);
+}
+
+.mobileUserAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    background: var(--color-accent-gradient-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    border: 1px solid var(--color-border);
+}
+
+.mobileUserName {
+    display: block;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+}
+
+.mobileUserUni {
+    display: block;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+}
+
+.mobileLogoutBtn {
+    width: 100%;
+    padding: 0.65rem;
+    border-radius: var(--radius-md);
+    background: rgba(225, 112, 85, 0.1);
+    color: var(--color-danger);
+    border: 1px solid rgba(225, 112, 85, 0.2);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-family: var(--font-family);
+}
+
+.mobileLogoutBtn:hover {
+    background: rgba(225, 112, 85, 0.2);
+}
+
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
     .nav {
+        display: none;
+    }
+
+    .userMenu {
         display: none;
     }
 
@@ -105,7 +263,11 @@
         display: flex;
     }
 
-    .userName {
-        display: none;
+    .mobileOverlay {
+        display: block;
+    }
+
+    .mobileMenu {
+        display: flex;
     }
 }

@@ -1,0 +1,11 @@
+# Verification Plan: Application Management Feature
+
+- [ ] Navigate to http://localhost:3000/login
+- [ ] Login as demo user
+- [ ] Navigate to http://localhost:3000/board
+- [ ] Find or create a post authored by "デモユーザー"
+- [ ] Click on the post and scroll to the bottom
+- [ ] Capture screenshot of "📋 申請管理" section
+- [ ] Click "申請を確認 →" button
+- [ ] Capture screenshot of application management page
+- [ ] Verify stats cards and application list

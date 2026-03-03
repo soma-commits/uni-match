@@ -118,8 +118,8 @@ export default function MyPage() {
                         ))}
                     </div>
                 </div>
-                <Link href={`/profile/${profile.id}`} className="btn btn-secondary">
-                    プロフィール編集
+                <Link href="/mypage/edit" className="btn btn-secondary">
+                    ✏️ プロフィール編集
                 </Link>
             </div>
 
@@ -206,14 +206,16 @@ export default function MyPage() {
                             app.post && (
                                 <Link href={`/board/${app.post.id}`} key={app.id} className={`${styles.postItem} glass-card`}>
                                     <div className={styles.postItemContent}>
-                                        <span className={styles.postItemTitle}>{app.post.title}</span>
-                                        <div className={styles.postItemMeta}>
-                                            <span>📅 応募日: {new Date(app.created_at).toLocaleDateString('ja-JP')}</span>
-                                            <span>
+                                        <div className={styles.postItemTitleRow}>
+                                            <span className={styles.postItemTitle}>{app.post.title}</span>
+                                            <span className={`${styles.statusBadge} ${styles[`status_${app.status}`]}`}>
                                                 {app.status === 'pending' && '⏳ 審査中'}
-                                                {app.status === 'accepted' && '✅ 承認済み'}
+                                                {app.status === 'accepted' && '✅ 承認済'}
                                                 {app.status === 'rejected' && '❌ 不承認'}
                                             </span>
+                                        </div>
+                                        <div className={styles.postItemMeta}>
+                                            <span>📅 応募日: {new Date(app.created_at).toLocaleDateString('ja-JP')}</span>
                                         </div>
                                     </div>
                                 </Link>

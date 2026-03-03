@@ -1,0 +1,329 @@
+.page {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xl);
+    transition: color var(--transition-fast);
+}
+
+.backLink:hover {
+    color: var(--color-text-primary);
+}
+
+/* Header */
+.pageHeader {
+    margin-bottom: var(--spacing-xl);
+}
+
+.pageTitle {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 4px;
+}
+
+.pageSubtitle {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+/* Stats Row */
+.statsRow {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.statCard {
+    padding: var(--spacing-md);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.statValue {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+}
+
+.statLabel {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+}
+
+.statPending {
+    color: var(--color-warning);
+}
+
+.statAccepted {
+    color: var(--color-success);
+}
+
+.statRejected {
+    color: var(--color-danger);
+}
+
+/* Applications List */
+.applicationsList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.applicationCard {
+    padding: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.applicationCard:hover {
+    transform: none;
+}
+
+/* Card Top */
+.cardTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+}
+
+.applicantInfo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    min-width: 0;
+}
+
+.applicantAvatar {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+    background: var(--color-accent-gradient-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    border: 2px solid var(--color-border);
+    flex-shrink: 0;
+    transition: transform var(--transition-fast);
+}
+
+.applicantAvatar:hover {
+    transform: scale(1.08);
+}
+
+.applicantDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.applicantName {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    transition: color var(--transition-fast);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.applicantName:hover {
+    color: #a29bfe;
+}
+
+.applicantUni {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
+/* Status Badge */
+.statusBadge {
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    flex-shrink: 0;
+}
+
+.status_pending {
+    background: rgba(253, 203, 110, 0.15);
+    color: var(--color-warning);
+    border: 1px solid rgba(253, 203, 110, 0.3);
+}
+
+.status_accepted {
+    background: rgba(0, 184, 148, 0.15);
+    color: var(--color-success);
+    border: 1px solid rgba(0, 184, 148, 0.3);
+}
+
+.status_rejected {
+    background: rgba(225, 112, 85, 0.15);
+    color: var(--color-danger);
+    border: 1px solid rgba(225, 112, 85, 0.3);
+}
+
+/* Bio */
+.applicantBio {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-normal);
+}
+
+/* Skills */
+.skillsRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+/* Message */
+.messageBox {
+    padding: var(--spacing-md);
+    background: var(--color-bg-input);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--color-accent-primary);
+}
+
+.messageLabel {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.messageText {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-normal);
+    white-space: pre-wrap;
+    margin: 0;
+}
+
+/* Card Footer */
+.cardFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-border);
+    gap: var(--spacing-md);
+}
+
+.appliedDate {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+}
+
+/* Action Buttons */
+.actionButtons {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.actionBtn {
+    padding: 8px 18px;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: 1px solid transparent;
+}
+
+.actionBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.acceptBtn {
+    background: rgba(0, 184, 148, 0.15);
+    color: var(--color-success);
+    border-color: rgba(0, 184, 148, 0.3);
+}
+
+.acceptBtn:hover:not(:disabled) {
+    background: rgba(0, 184, 148, 0.25);
+    box-shadow: 0 0 12px rgba(0, 184, 148, 0.2);
+}
+
+.rejectBtn {
+    background: rgba(225, 112, 85, 0.1);
+    color: var(--color-danger);
+    border-color: rgba(225, 112, 85, 0.2);
+}
+
+.rejectBtn:hover:not(:disabled) {
+    background: rgba(225, 112, 85, 0.2);
+}
+
+/* Empty State */
+.emptyState {
+    text-align: center;
+    padding: var(--spacing-3xl);
+    color: var(--color-text-muted);
+}
+
+.emptyState:hover {
+    transform: none;
+}
+
+.emptyIcon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: var(--spacing-md);
+}
+
+.emptyState h3 {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.emptyState p {
+    font-size: var(--font-size-sm);
+}
+
+/* Loading State */
+.loadingState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-3xl);
+    gap: var(--spacing-md);
+    color: var(--color-text-muted);
+}
+
+.loadingIcon {
+    font-size: 2.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .statsRow {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cardTop {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cardFooter {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

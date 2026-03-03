@@ -22,7 +22,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <div className="bg-grid" />
         <Header />
         <main style={{ paddingTop: 'var(--header-height)' }}>

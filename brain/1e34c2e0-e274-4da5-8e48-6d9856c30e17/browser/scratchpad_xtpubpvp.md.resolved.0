@@ -1,0 +1,10 @@
+# Tasks
+- [ ] Profile Edit Page Verification
+  - [ ] Login as demo user
+  - [ ] Navigate to `/mypage`
+  - [ ] Click "✏️ プロフィール編集"
+  - [ ] Screenshot the profile edit page (avatar, fields, skills)
+- [ ] Mobile Menu Verification
+  - [ ] Resize browser width to 375px
+  - [ ] Screenshot mobile header with hamburger
+  - [ ] Click hamburger menu and screenshot open menu

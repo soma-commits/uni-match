@@ -1,0 +1,10 @@
+# Chat Feature Verification Plan
+
+- [ ] Navigate to http://localhost:3000/board
+- [ ] Click on a post card to go to its detail page
+- [ ] Verify "💬 チームチャット" section and "チャットを開く →" button
+- [ ] Take a screenshot of the post detail page
+- [ ] Click "チャットを開く →" button
+- [ ] Verify chat UI (header, messages area, input area)
+- [ ] Take a screenshot of the chat page
+- [ ] Report findings

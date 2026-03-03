@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "スレッド形式コメント機能（Reddit/Discord風）の実装計画。`post_comments` テーブルによる自己参照構造、再帰的UIコンポーネント、通知連携を定義。",
+  "updatedAt":  "2026-03-03T12:10:36.397481400Z",
+  "version":  "2"
+}

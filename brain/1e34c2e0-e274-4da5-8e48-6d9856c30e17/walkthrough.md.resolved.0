@@ -1,0 +1,32 @@
+# チーム内リアルタイムチャット機能 — 実装完了
+
+## 変更内容
+
+| ファイル | 操作 | 内容 |
+|---------|------|------|
+| [page.tsx](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/app/board/[id]/chat/page.tsx) | 新規 | チャットページ本体 |
+| [page.module.css](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/app/board/[id]/chat/page.module.css) | 新規 | チャットUI用CSS |
+| [page.tsx](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/app/board/[id]/page.tsx) | 修正 | チャットリンクボタン追加 |
+| [page.module.css](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/app/board/[id]/page.module.css) | 修正 | チャットセクションCSS追加 |
+
+## 主な機能
+
+- **リアルタイム受信**: Supabase Realtime（`postgres_changes`）で新着メッセージを即時反映
+- **メッセージ送受信**: [sendMessage](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/lib/supabase/queries.ts#401-417) / [getMessages](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/lib/supabase/queries.ts#381-400) を使用、Enter で送信・Shift+Enter で改行
+- **自分/相手の表示分け**: 自分は右寄せ紫グラデーション、相手は左寄せガラスカード
+- **アバター・送信者名表示**: 連続メッセージ時はアバターを省略してスマートに表示
+- **日付セパレーター**: 日付が変わるとセパレーターを自動挿入
+- **自動スクロール**: 新メッセージ着信時に画面最下部へスクロール
+- **未認証リダイレクト**: ログインしていない場合は `/login` にリダイレクト
+
+## 検証結果
+
+ビルド成功（exit code 0）、ブラウザ検証でUI動作を確認。
+
+````carousel
+![投稿詳細ページ下部 — 参加申請・チャットボタン](C:/Users/sohor/.gemini/antigravity/brain/1e34c2e0-e274-4da5-8e48-6d9856c30e17/post_detail_chat_section_1772390588311.png)
+<!-- slide -->
+![チャットページ — ヘッダー・空状態・入力エリア](C:/Users/sohor/.gemini/antigravity/brain/1e34c2e0-e274-4da5-8e48-6d9856c30e17/chat_page_ui_1772390685895.png)
+````
+
+![ブラウザ操作の録画](C:/Users/sohor/.gemini/antigravity/brain/1e34c2e0-e274-4da5-8e48-6d9856c30e17/chat_feature_verify_1772390543204.webp)

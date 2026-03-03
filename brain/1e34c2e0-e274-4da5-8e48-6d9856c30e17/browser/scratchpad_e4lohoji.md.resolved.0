@@ -1,0 +1,15 @@
+# Verification Plan
+
+## Feature 1: Post status toggle
+- [ ] Login as Demo User at `http://localhost:3000/login`
+- [ ] Go to `http://localhost:3000/board`
+- [ ] Select a post by "デモユーザー"
+- [ ] Take a screenshot of the initial status and button
+- [ ] Click "🔴 募集を終了" button
+- [ ] Verify status badge and button update
+- [ ] Take a screenshot of the updated status
+
+## Feature 2: Application status badges on MyPage
+- [ ] Go to `http://localhost:3000/mypage`
+- [ ] Select "🙋 応募した投稿" tab
+- [ ] Take a screenshot showing application status badges

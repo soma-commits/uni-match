@@ -1,0 +1,24 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (107,39)<a class='Header-module__4RDIuG__logo' href='/'>UniMatch />
+	[1] (52,39)<span >🚀 />
+[2] (415,39)<a class='Header-module__4RDIuG__navLink ' href='/board'>掲示板 />
+[3] (506,39)<a class='Header-module__4RDIuG__navLink ' href='/board/new'>投稿する />
+[4] (613,39)<a class='Header-module__4RDIuG__navLink ' href='/mypage'>マイページ />
+[5] (914,37)<a class='btn btn-primary' href='/login'>ログイン />
+🎓 ログイン
+学生メールアドレスで認証してください
+[6] (500,424)<label class='form-label'>メールアドレス />
+大学発行のメールアドレス（.ac.jp等）をご使用ください
+[7] (500,593)<button class='btn btn-primary page-module__ekpgUW__submitBtn'>送信中... />
+または
+デモユーザーでお試し
+[8] (500,753)<button class='page-module__ekpgUW__demoUserBtn' />
+	[9] (341,753)<span >🧑‍💻 />
+	[10] (467,753)<div  />
+		[11] (467,742)<span >デモユーザー />
+		[12] (467,765)<span >ワンクリックですぐにログイン />
+
+</current_dom>

@@ -196,6 +196,41 @@
     margin-bottom: var(--spacing-xl);
 }
 
+/* Status Badges */
+.postItemTitleRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+}
+
+.statusBadge {
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.status_pending {
+    background: rgba(253, 203, 110, 0.15);
+    color: var(--color-warning);
+    border: 1px solid rgba(253, 203, 110, 0.3);
+}
+
+.status_accepted {
+    background: rgba(0, 184, 148, 0.15);
+    color: var(--color-success);
+    border: 1px solid rgba(0, 184, 148, 0.3);
+}
+
+.status_rejected {
+    background: rgba(225, 112, 85, 0.15);
+    color: var(--color-danger);
+    border: 1px solid rgba(225, 112, 85, 0.3);
+}
+
 @media (max-width: 768px) {
     .profileSummary {
         flex-direction: column;

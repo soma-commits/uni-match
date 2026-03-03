@@ -1,0 +1,199 @@
+.page {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    max-width: 720px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+
+.pageHeader {
+    margin-bottom: var(--spacing-xl);
+}
+
+.pageTitle {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 4px;
+}
+
+.pageSubtitle {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+/* Form Grid */
+.formGrid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.section {
+    padding: var(--spacing-xl);
+}
+
+.section:hover {
+    transform: none;
+}
+
+.sectionTitle {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-md);
+}
+
+.sectionDesc {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Field Groups */
+.fieldGroup {
+    margin-bottom: var(--spacing-md);
+}
+
+.fieldRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+/* Avatar Grid */
+.avatarGrid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: var(--spacing-sm);
+}
+
+.avatarOption {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-input);
+    border: 2px solid transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatarOption:hover {
+    background: var(--color-bg-glass-hover);
+    border-color: var(--color-border);
+}
+
+.avatarSelected {
+    border-color: var(--color-accent-primary);
+    background: rgba(108, 92, 231, 0.15);
+    box-shadow: 0 0 12px rgba(108, 92, 231, 0.2);
+}
+
+/* Skills */
+.skillCategory {
+    margin-bottom: var(--spacing-lg);
+}
+
+.skillCategory:last-child {
+    margin-bottom: 0;
+}
+
+.skillCategoryTitle {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.skillsGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skillChip {
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    background: var(--color-bg-input);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-family);
+}
+
+.skillChip:hover {
+    background: var(--color-bg-glass-hover);
+    color: var(--color-text-primary);
+}
+
+.skillChipSelected {
+    background: rgba(108, 92, 231, 0.15);
+    border-color: var(--color-accent-primary);
+    color: #a29bfe;
+}
+
+.checkMark {
+    font-size: 0.7rem;
+    color: var(--color-success);
+}
+
+/* Save Bar */
+.saveBar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: rgba(10, 10, 15, 0.9);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--spacing-md);
+    z-index: 50;
+}
+
+.successMsg {
+    font-size: var(--font-size-sm);
+    color: var(--color-success);
+    font-weight: var(--font-weight-medium);
+}
+
+/* Loading */
+.loadingState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-3xl);
+    gap: var(--spacing-md);
+    color: var(--color-text-muted);
+}
+
+.loadingIcon {
+    font-size: 2.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .fieldRow {
+        grid-template-columns: 1fr;
+    }
+
+    .avatarGrid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    .saveBar {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+}

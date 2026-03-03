@@ -1,0 +1,36 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (128,43)<a class='Header-module__4RDIuG__logo' href='/'>UniMatch />
+	[1] (62,43)<span >🚀 />
+[2] (290,43)<a class='Header-module__4RDIuG__navLink ' href='/board'>掲示板 />
+[3] (400,43)<a class='Header-module__4RDIuG__navLink ' href='/board/new'>投稿する />
+[4] (527,43)<a class='Header-module__4RDIuG__navLink ' href='/mypage'>マイページ />
+[5] (643,43)<a class='Header-module__4RDIuG__avatar' href='/mypage' title='デモユーザー'>🧑‍💻 />
+デモユーザー
+[6] (887,43)<button class='btn btn-ghost'>ログアウト />
+[7] (96,161)<a class='page-module__iIF89a__backLink' href='/board'>← 掲示板に戻る />
+EdTech
+🟢 募集中
+Test Project Name
+📅
+2026/3/2
+👥
+1
+/
+4
+人
+💬
+0
+件の応募
+This is a test description.
+求めるスキル
+事業計画
+投稿者
+[8] (109,928)<a class='page-module__iIF89a__authorAvatar' href='/profile/d30b8df5-0acc-4b3d-bece-1c2c6772eaa7'>🧑‍💻 />
+[9] (235,913)<a class='page-module__iIF89a__authorName' href='/profile/d30b8df5-0acc-4b3d-bece-1c2c6772eaa7'>デモユーザー />
+1
+年
+
+</current_dom>

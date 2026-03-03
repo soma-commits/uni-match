@@ -1,0 +1,30 @@
+# 申請管理画面（投稿者側） — 実装完了
+
+## 変更内容
+
+| ファイル | 操作 | 内容 |
+|---------|------|------|
+| [queries.ts](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/lib/supabase/queries.ts) | 修正 | [updateApplicationStatus()](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/lib/supabase/queries.ts#377-412) 関数を追加 |
+| [applications/page.tsx](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/app/board/[id]/applications/page.tsx) | 新規 | 申請管理ページ本体 |
+| [applications/page.module.css](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/app/board/[id]/applications/page.module.css) | 新規 | 申請管理ページCSS |
+| [board/[id]/page.tsx](file:///c:/Users/sohor/.gemini/antigravity/uni-match/src/app/board/[id]/page.tsx) | 修正 | 投稿者限定の申請管理リンク追加 |
+
+## 主な機能
+
+- **投稿者限定アクセス**: ログインユーザーが投稿者の場合のみ「📋 申請管理」リンクを表示
+- **統計カード**: 全申請・審査中・承認済・拒否の件数をリアルタイム表示
+- **申請カード**: 申請者のプロフィール（アバター・名前・大学・スキルタグ）、メッセージ、申請日を表示
+- **ステータスバッジ**: 審査中（黄）、承認済（緑）、拒否（赤）
+- **承認/拒否ボタン**: pending状態の申請のみアクション可能。承認時は `current_members` を自動インクリメント
+
+## 検証結果
+
+ビルド成功、ブラウザ検証で全UIが正常動作。
+
+````carousel
+![投稿詳細ページ — チャット・申請管理セクション](C:/Users/sohor/.gemini/antigravity/brain/1e34c2e0-e274-4da5-8e48-6d9856c30e17/post_detail_application_management_section_1772436612063.png)
+<!-- slide -->
+![申請管理ページ — 統計カード・申請カード](C:/Users/sohor/.gemini/antigravity/brain/1e34c2e0-e274-4da5-8e48-6d9856c30e17/application_management_page_ui_1772436635138.png)
+````
+
+![ブラウザ操作の録画](C:/Users/sohor/.gemini/antigravity/brain/1e34c2e0-e274-4da5-8e48-6d9856c30e17/applications_verify_1772436568674.webp)

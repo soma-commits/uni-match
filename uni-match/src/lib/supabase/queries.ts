@@ -60,6 +60,17 @@ export interface DBMessage {
     sender?: DBProfile;
 }
 
+export interface DBPostComment {
+    id: string;
+    post_id: string;
+    author_id: string;
+    parent_id: string | null;
+    content: string;
+    created_at: string;
+    updated_at: string;
+    author?: DBProfile;
+}
+
 // ============================================================
 // Posts
 // ============================================================
@@ -203,6 +214,161 @@ export async function createPost(post: {
     }
 
     return newPost;
+}
+
+export async function updatePostStatus(postId: string, status: 'recruiting' | 'closed') {
+    const supabase = createClient();
+
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) throw new Error('Not authenticated');
+
+    const { error } = await supabase
+        .from('posts')
+        .update({ status, updated_at: new Date().toISOString() })
+        .eq('id', postId)
+        .eq('author_id', user.id);
+
+    if (error) throw error;
+}
+
+export async function updatePost(postId: string, post: {
+    title: string;
+    description: string;
+    category: string;
+    max_members: number;
+    skill_ids: string[];
+    tags: string[];
+}) {
+    const supabase = createClient();
+
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) throw new Error('Not authenticated');
+
+    // 投稿本体を更新
+    const { error: postError } = await supabase
+        .from('posts')
+        .update({
+            title: post.title,
+            description: post.description,
+            category: post.category,
+            max_members: post.max_members,
+            updated_at: new Date().toISOString(),
+        })
+        .eq('id', postId)
+        .eq('author_id', user.id);
+
+    if (postError) throw postError;
+
+    // 既存スキルを削除して再挿入
+    await supabase.from('post_required_skills').delete().eq('post_id', postId);
+    if (post.skill_ids.length > 0) {
+        await supabase
+            .from('post_required_skills')
+            .insert(post.skill_ids.map((skill_id) => ({ post_id: postId, skill_id })));
+    }
+
+    // 既存タグを削除して再挿入
+    await supabase.from('post_tags').delete().eq('post_id', postId);
+    if (post.tags.length > 0) {
+        await supabase
+            .from('post_tags')
+            .insert(post.tags.map((tag) => ({ post_id: postId, tag })));
+    }
+}
+
+export async function deletePost(postId: string) {
+    const supabase = createClient();
+
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) throw new Error('Not authenticated');
+
+    // 関連データを削除（RLSエラーは無視して続行）
+    const tables = ['messages', 'applications', 'post_required_skills', 'post_tags'];
+    for (const table of tables) {
+        try {
+            await supabase.from(table).delete().eq('post_id', postId);
+        } catch (e) {
+            console.warn(`Failed to delete from ${table}:`, e);
+        }
+    }
+
+    const { error } = await supabase
+        .from('posts')
+        .delete()
+        .eq('id', postId)
+        .eq('author_id', user.id);
+
+    if (error) throw error;
+}
+
+// ============================================================
+// Notifications
+// ============================================================
+
+export interface DBNotification {
+    id: string;
+    user_id: string;
+    type: 'application_received' | 'application_accepted' | 'application_rejected' | 'new_message';
+    title: string;
+    message: string;
+    link: string;
+    is_read: boolean;
+    created_at: string;
+}
+
+export async function getNotifications() {
+    const supabase = createClient();
+
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return [];
+
+    const { data, error } = await supabase
+        .from('notifications')
+        .select('*')
+        .eq('user_id', user.id)
+        .order('created_at', { ascending: false })
+        .limit(20);
+
+    if (error) {
+        console.error('Notifications table may not exist:', error);
+        return [];
+    }
+
+    return data as DBNotification[];
+}
+
+export async function createNotification(notification: {
+    user_id: string;
+    type: string;
+    title: string;
+    message: string;
+    link: string;
+}) {
+    const supabase = createClient();
+
+    const { error } = await supabase
+        .from('notifications')
+        .insert({
+            ...notification,
+            is_read: false,
+        });
+
+    if (error) {
+        console.error('Failed to create notification:', error);
+    }
+}
+
+export async function markNotificationsRead() {
+    const supabase = createClient();
+
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+
+    await supabase
+        .from('notifications')
+        .update({ is_read: true })
+        .eq('user_id', user.id)
+        .eq('is_read', false);
 }
 
 // ============================================================
@@ -374,6 +540,42 @@ export async function getPostApplications(postId: string) {
     }));
 }
 
+export async function updateApplicationStatus(
+    applicationId: string,
+    status: 'accepted' | 'rejected'
+) {
+    const supabase = createClient();
+
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) throw new Error('Not authenticated');
+
+    // ステータスを更新
+    const { data: updatedApp, error } = await supabase
+        .from('applications')
+        .update({ status })
+        .eq('id', applicationId)
+        .select('post_id')
+        .single();
+
+    if (error) throw error;
+
+    // 承認時は current_members をインクリメント
+    if (status === 'accepted' && updatedApp) {
+        const { data: post } = await supabase
+            .from('posts')
+            .select('current_members')
+            .eq('id', updatedApp.post_id)
+            .single();
+
+        if (post) {
+            await supabase
+                .from('posts')
+                .update({ current_members: post.current_members + 1 })
+                .eq('id', updatedApp.post_id);
+        }
+    }
+}
+
 // ============================================================
 // Messages (Realtime Chat)
 // ============================================================
@@ -463,4 +665,61 @@ export async function getUserPosts(userId: string) {
         tags: post.tags?.map((t: { tag: string }) => t.tag) || [],
         applications_count: post.applications_count?.[0]?.count || 0,
     }));
+}
+
+// ============================================================
+// Post Comments (Threads)
+// ============================================================
+
+export async function getPostComments(postId: string) {
+    const supabase = createClient();
+    const { data, error } = await supabase
+        .from('post_comments')
+        .select(`
+            *,
+            author:profiles!post_comments_author_id_fkey(*)
+        `)
+        .eq('post_id', postId)
+        .order('created_at', { ascending: true });
+
+    if (error) throw error;
+    return data as DBPostComment[];
+}
+
+export async function addPostComment(postId: string, content: string, parentId?: string) {
+    const supabase = createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) throw new Error('Not authenticated');
+
+    const { data, error } = await supabase
+        .from('post_comments')
+        .insert([
+            {
+                post_id: postId,
+                author_id: user.id,
+                content,
+                parent_id: parentId || null,
+            },
+        ])
+        .select(`
+            *,
+            author:profiles!post_comments_author_id_fkey(*)
+        `)
+        .single();
+
+    if (error) throw error;
+    return data as DBPostComment;
+}
+
+export async function deletePostComment(commentId: string) {
+    const supabase = createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) throw new Error('Not authenticated');
+
+    const { error } = await supabase
+        .from('post_comments')
+        .delete()
+        .eq('id', commentId);
+
+    if (error) throw error;
 }

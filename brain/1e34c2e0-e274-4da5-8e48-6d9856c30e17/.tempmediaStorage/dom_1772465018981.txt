@@ -1,0 +1,45 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (107,39)<a class='Header-module__4RDIuG__logo' href='/'>UniMatch />
+	[1] (52,39)<span >🚀 />
+[2] (324,39)<a class='Header-module__4RDIuG__navLink ' href='/board'>掲示板 />
+[3] (416,39)<a class='Header-module__4RDIuG__navLink ' href='/board/new'>投稿する />
+[4] (522,39)<a class='Header-module__4RDIuG__navLink ' href='/mypage'>マイページ />
+[5] (701,39)<a class='Header-module__4RDIuG__avatar' href='/mypage' title='デモユーザー'>🧑‍💻 />
+デモユーザー
+[6] (905,39)<button class='btn btn-ghost'>ログアウト />
+✏️ プロフィール編集
+あなたの情報を更新してチームにアピールしましょう
+アバター
+[7] (211,359)<button class='page-module__xfxETG__avatarOption page-module__xfxETG__avatarSelected'>🧑‍💻 />
+[8] (293,359)<button class='page-module__xfxETG__avatarOption '>👩‍💻 />
+[9] (376,359)<button class='page-module__xfxETG__avatarOption '>🧑‍🎓 />
+[10] (459,359)<button class='page-module__xfxETG__avatarOption '>👩‍🎓 />
+[11] (541,359)<button class='page-module__xfxETG__avatarOption '>🧑‍💼 />
+[12] (624,359)<button class='page-module__xfxETG__avatarOption '>👩‍💼 />
+[13] (707,359)<button class='page-module__xfxETG__avatarOption '>🧑‍🔬 />
+[14] (789,359)<button class='page-module__xfxETG__avatarOption '>👩‍🔬 />
+[15] (211,442)<button class='page-module__xfxETG__avatarOption '>🧑‍🎨 />
+[16] (293,442)<button class='page-module__xfxETG__avatarOption '>👩‍🎨 />
+[17] (376,442)<button class='page-module__xfxETG__avatarOption '>🦊 />
+[18] (459,442)<button class='page-module__xfxETG__avatarOption '>🐱 />
+[19] (541,442)<button class='page-module__xfxETG__avatarOption '>🐶 />
+[20] (624,442)<button class='page-module__xfxETG__avatarOption '>🐼 />
+[21] (707,442)<button class='page-module__xfxETG__avatarOption '>🦁 />
+[22] (789,442)<button class='page-module__xfxETG__avatarOption '>🐯 />
+基本情報
+[23] (195,641)<label class='form-label'>名前 * />
+[24] (500,683)<input class='form-input' id='name' placeholder='山田 太郎' />
+[25] (189,742)<label class='form-label'>大学 />
+[26] (333,785)<input class='form-input' id='university' placeholder='東京大学' />
+[27] (524,742)<label class='form-label'>学部 />
+[28] (667,785)<input class='form-input' id='faculty' placeholder='工学部' />
+[29] (189,844)<label class='form-label'>学年 />
+[30] (500,884)<select class='form-input' id='year' />
+自己紹介
+[31] (747,956)<button class='btn btn-secondary'>キャンセル />
+[32] (897,956)<button class='btn btn-primary'>💾 保存する />
+
+</current_dom>

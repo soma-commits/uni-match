@@ -1,0 +1,23 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (128,43)<a class='Header-module__4RDIuG__logo' href='/'>UniMatch />
+	[1] (62,43)<span >🚀 />
+[2] (261,43)<a class='Header-module__4RDIuG__navLink ' href='/board'>掲示板 />
+[3] (369,43)<a class='Header-module__4RDIuG__navLink ' href='/board/new'>投稿する />
+[4] (493,43)<a class='Header-module__4RDIuG__navLink ' href='/mypage'>マイページ />
+[5] (582,43)<button aria-label='通知' class='NotificationBell-module__2cZRLq__bellBtn'>🔔 />
+[6] (650,43)<a class='Header-module__4RDIuG__avatar' href='/mypage' title='デモユーザー'>🧑‍💻 />
+デモユーザー
+[7] (888,43)<button class='btn btn-ghost'>ログアウト />
+✏️ プロジェクトを編集
+プロジェクトの内容を更新できます
+[8] (500,340)<label class='form-label'>プロジェクト名 * />
+[9] (500,395)<input class='form-input' id='post-title' />
+[10] (500,558)<label class='form-label'>プロジェクトの詳細 * />
+[11] (500,690)<textarea class='form-textarea' id='post-desc' />
+カテゴリ *
+[12] (500,985)<select class='form-select' id='post-category' />
+
+</current_dom>
