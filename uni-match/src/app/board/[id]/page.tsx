@@ -30,6 +30,7 @@ interface PostDetail {
     required_skills: DBSkill[];
     tags: string[];
     applications_count: number;
+    other_skill_detail?: string;
 }
 
 export default function PostDetailPage() {
@@ -233,7 +234,9 @@ export default function PostDetailPage() {
                             <div className={styles.skills}>
                                 {post.required_skills.map((skill) => (
                                     <span key={skill.id} className="skill-tag" data-category={skill.category}>
-                                        {skill.name}
+                                        {skill.name === 'その他' && post.other_skill_detail
+                                            ? post.other_skill_detail
+                                            : skill.name}
                                     </span>
                                 ))}
                             </div>

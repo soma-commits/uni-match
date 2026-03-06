@@ -158,7 +158,9 @@ export default function BoardPage() {
                                         className="skill-tag"
                                         data-category={skill.category}
                                     >
-                                        {skill.name}
+                                        {skill.name === 'その他' && post.other_skill_detail
+                                            ? post.other_skill_detail
+                                            : skill.name}
                                     </span>
                                 ))}
                             </div>

@@ -38,6 +38,7 @@ export interface DBPost {
     required_skills?: DBSkill[];
     tags?: string[];
     applications_count?: number;
+    other_skill_detail?: string;
 }
 
 export interface DBApplication {
