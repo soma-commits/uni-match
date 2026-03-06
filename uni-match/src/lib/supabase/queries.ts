@@ -167,6 +167,7 @@ export async function createPost(post: {
     max_members: number;
     skill_ids: string[];
     tags: string[];
+    other_skill_detail?: string;
 }) {
     const supabase = createClient();
 
@@ -182,6 +183,7 @@ export async function createPost(post: {
             category: post.category,
             max_members: post.max_members,
             author_id: user.id,
+            other_skill_detail: post.other_skill_detail,
         })
         .select()
         .single();

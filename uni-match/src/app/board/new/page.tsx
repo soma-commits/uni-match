@@ -65,18 +65,14 @@ export default function NewPostPage() {
         }
 
         try {
-            let finalDescription = description;
-            if (isOtherSelected && otherSkillDetail.trim()) {
-                finalDescription += `\n\n【その他の必須スキル】\n${otherSkillDetail.trim()}`;
-            }
-
             await createPost({
                 title,
-                description: finalDescription,
+                description,
                 category,
                 max_members: maxMembers,
                 skill_ids: selectedSkillIds,
                 tags,
+                other_skill_detail: isOtherSelected ? otherSkillDetail.trim() : undefined,
             });
             setSubmitted(true);
         } catch (err) {
