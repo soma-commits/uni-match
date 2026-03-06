@@ -84,6 +84,11 @@
     border-color: var(--color-accent-primary);
 }
 
+.filterSelect option {
+    background: #1a1a2e;
+    color: #e0e0e0;
+}
+
 /* Skill Filter Tags */
 .skillFilters {
     display: flex;
