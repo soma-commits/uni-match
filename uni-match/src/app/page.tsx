@@ -20,7 +20,7 @@ export default function HomePage() {
             <span className={styles.titleGradient}>アイデアをカタチにする。</span>
           </h1>
           <p className={styles.subtitle}>
-            UniMatchは、起業を目指す学生がスキルを持つ仲間とつながり、チームを組んでプロジェクトを実現するためのプラットフォームです。
+            BizMatchは、起業を目指す学生がスキルを持つ仲間とつながり、チームを組んでプロジェクトを実現するためのプラットフォームです。
           </p>
           <div className={styles.ctaGroup}>
             <Link href="/login" className="btn btn-primary btn-lg">
@@ -35,7 +35,7 @@ export default function HomePage() {
 
       {/* Features */}
       <section className={styles.features}>
-        <h2 className={styles.sectionTitle}>UniMatchでできること</h2>
+        <h2 className={styles.sectionTitle}>BizMatchでできること</h2>
         <p className={styles.sectionSubtitle}>起業チーム結成に必要なすべてが揃っています</p>
         <div className={styles.featuresGrid}>
           <div className={`${styles.featureCard} glass-card`}>
@@ -125,7 +125,7 @@ export default function HomePage() {
 
       {/* Footer */}
       <footer className={styles.footer}>
-        <p>© 2026 UniMatch — 学生起業マッチングプラットフォーム</p>
+        <p>© 2026 BizMatch — 学生起業マッチングプラットフォーム</p>
       </footer>
     </>
   );

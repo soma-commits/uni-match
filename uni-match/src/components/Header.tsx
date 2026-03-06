@@ -90,7 +90,7 @@ export default function Header() {
             <header className={styles.header} style={isLanding ? { background: 'transparent', borderBottom: 'none' } : {}}>
                 <Link href="/" className={styles.logo}>
                     <span className={styles.logoIcon}>🚀</span>
-                    UniMatch
+                    BizMatch
                 </Link>
 
                 <nav className={styles.nav}>

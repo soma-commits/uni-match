@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 
 export const metadata: Metadata = {
-  title: "UniMatch - 学生起業マッチングプラットフォーム",
+  title: "BizMatch - 学生起業マッチングプラットフォーム",
   description: "起業を目指す学生がスキルを持つ仲間を見つけてチームを組む。学生限定の起業マッチング掲示板。",
 };
 
