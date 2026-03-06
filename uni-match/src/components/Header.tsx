@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import type { DBProfile } from '@/lib/supabase/queries';
+import { getTotalUnreadDMCount } from '@/lib/supabase/queries';
 import NotificationBell from './NotificationBell';
 import styles from './Header.module.css';
 
@@ -14,6 +15,7 @@ export default function Header() {
     const [profile, setProfile] = useState<DBProfile | null>(null);
     const [loading, setLoading] = useState(true);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [unreadDMCount, setUnreadDMCount] = useState(0);
 
     useEffect(() => {
         const supabase = createClient();
@@ -48,6 +50,18 @@ export default function Header() {
 
         return () => subscription.unsubscribe();
     }, []);
+
+    // 未読DM数のポーリング（ログイン中のみ）
+    useEffect(() => {
+        if (!profile) return;
+        const fetchUnread = async () => {
+            const count = await getTotalUnreadDMCount();
+            setUnreadDMCount(count);
+        };
+        fetchUnread();
+        const interval = setInterval(fetchUnread, 30000);
+        return () => clearInterval(interval);
+    }, [profile]);
 
     // ページ遷移時にモバイルメニューを閉じる
     useEffect(() => {
@@ -97,6 +111,12 @@ export default function Header() {
                     ) : profile ? (
                         <>
                             <NotificationBell />
+                            <Link href="/dm" className={styles.dmLink} title="DM">
+                                💬
+                                {unreadDMCount > 0 && (
+                                    <span className={styles.dmBadge}>{unreadDMCount}</span>
+                                )}
+                            </Link>
                             <Link href="/mypage" className={styles.avatar} title={profile.name}>
                                 {profile.avatar}
                             </Link>
@@ -139,6 +159,18 @@ export default function Header() {
                             {link.label}
                         </Link>
                     ))}
+                    {profile && (
+                        <Link
+                            href="/dm"
+                            className={`${styles.mobileNavLink} ${pathname.startsWith('/dm') ? styles.mobileNavLinkActive : ''}`}
+                        >
+                            <span className={styles.mobileNavIcon}>💬</span>
+                            DM
+                            {unreadDMCount > 0 && (
+                                <span className={styles.mobileDmBadge}>{unreadDMCount}</span>
+                            )}
+                        </Link>
+                    )}
                 </nav>
 
                 <div className={styles.mobileMenuFooter}>

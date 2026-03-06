@@ -723,3 +723,207 @@ export async function deletePostComment(commentId: string) {
 
     if (error) throw error;
 }
+
+// ============================================================
+// Direct Messages (DM)
+// ============================================================
+
+export interface DBConversation {
+    id: string;
+    user1_id: string;
+    user2_id: string;
+    created_at: string;
+    updated_at: string;
+    other_user?: DBProfile;
+    last_message?: DBDirectMessage;
+    unread_count?: number;
+}
+
+export interface DBDirectMessage {
+    id: string;
+    conversation_id: string;
+    sender_id: string;
+    content: string;
+    is_read: boolean;
+    created_at: string;
+    sender?: DBProfile;
+}
+
+/**
+ * ユーザーIDのペアを正規化して (user1_id < user2_id) にする
+ */
+function normalizeUserPair(userA: string, userB: string): { user1_id: string; user2_id: string } {
+    return userA < userB
+        ? { user1_id: userA, user2_id: userB }
+        : { user1_id: userB, user2_id: userA };
+}
+
+/**
+ * otherUserIdとの会話を取得、なければ作成して返す
+ */
+export async function getOrCreateConversation(otherUserId: string): Promise<DBConversation | null> {
+    const supabase = createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) throw new Error('Not authenticated');
+
+    const { user1_id, user2_id } = normalizeUserPair(user.id, otherUserId);
+
+    // 既存の会話を検索
+    const { data: existing } = await supabase
+        .from('dm_conversations')
+        .select('*')
+        .eq('user1_id', user1_id)
+        .eq('user2_id', user2_id)
+        .single();
+
+    if (existing) return existing as DBConversation;
+
+    // 新規作成
+    const { data: created, error } = await supabase
+        .from('dm_conversations')
+        .insert({ user1_id, user2_id })
+        .select()
+        .single();
+
+    if (error) {
+        console.error('Error creating conversation:', error);
+        return null;
+    }
+    return created as DBConversation;
+}
+
+/**
+ * 自分が参加している会話一覧を取得（最新メッセージ・未読数付き）
+ */
+export async function getDMConversations(): Promise<DBConversation[]> {
+    const supabase = createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return [];
+
+    const { data, error } = await supabase
+        .from('dm_conversations')
+        .select(`
+            *,
+            user1:profiles!dm_conversations_user1_id_fkey(id, name, avatar, university),
+            user2:profiles!dm_conversations_user2_id_fkey(id, name, avatar, university),
+            messages:direct_messages(
+                id, content, sender_id, is_read, created_at
+            )
+        `)
+        .or(`user1_id.eq.${user.id},user2_id.eq.${user.id}`)
+        .order('updated_at', { ascending: false });
+
+    if (error) {
+        console.error('Error fetching conversations:', error);
+        return [];
+    }
+
+    return (data || []).map((conv) => {
+        const otherUser = conv.user1_id === user.id ? conv.user2 : conv.user1;
+        const msgs = (conv.messages || []).sort(
+            (a: DBDirectMessage, b: DBDirectMessage) =>
+                new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        );
+        const lastMessage = msgs[0] || null;
+        const unreadCount = msgs.filter(
+            (m: DBDirectMessage) => !m.is_read && m.sender_id !== user.id
+        ).length;
+
+        return {
+            id: conv.id,
+            user1_id: conv.user1_id,
+            user2_id: conv.user2_id,
+            created_at: conv.created_at,
+            updated_at: conv.updated_at,
+            other_user: otherUser as DBProfile,
+            last_message: lastMessage,
+            unread_count: unreadCount,
+        } as DBConversation;
+    });
+}
+
+/**
+ * 特定会話のメッセージ一覧を取得
+ */
+export async function getDMMessages(conversationId: string): Promise<DBDirectMessage[]> {
+    const supabase = createClient();
+
+    const { data, error } = await supabase
+        .from('direct_messages')
+        .select(`
+            *,
+            sender:profiles!direct_messages_sender_id_fkey(id, name, avatar)
+        `)
+        .eq('conversation_id', conversationId)
+        .order('created_at', { ascending: true });
+
+    if (error) {
+        console.error('Error fetching DM messages:', error);
+        return [];
+    }
+    return data as DBDirectMessage[];
+}
+
+/**
+ * DMを送信する
+ */
+export async function sendDM(conversationId: string, content: string): Promise<void> {
+    const supabase = createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) throw new Error('Not authenticated');
+
+    const { error } = await supabase
+        .from('direct_messages')
+        .insert({ conversation_id: conversationId, sender_id: user.id, content });
+
+    if (error) throw error;
+
+    // 会話のupdated_atを更新
+    await supabase
+        .from('dm_conversations')
+        .update({ updated_at: new Date().toISOString() })
+        .eq('id', conversationId);
+}
+
+/**
+ * 会話内の未読メッセージを既読にする
+ */
+export async function markDMsRead(conversationId: string): Promise<void> {
+    const supabase = createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+
+    await supabase
+        .from('direct_messages')
+        .update({ is_read: true })
+        .eq('conversation_id', conversationId)
+        .neq('sender_id', user.id)
+        .eq('is_read', false);
+}
+
+/**
+ * 自分の全未読DM数を取得
+ */
+export async function getTotalUnreadDMCount(): Promise<number> {
+    const supabase = createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return 0;
+
+    // 自分が参加している会話IDを取得
+    const { data: convs } = await supabase
+        .from('dm_conversations')
+        .select('id')
+        .or(`user1_id.eq.${user.id},user2_id.eq.${user.id}`);
+
+    if (!convs || convs.length === 0) return 0;
+
+    const convIds = convs.map((c: { id: string }) => c.id);
+    const { count } = await supabase
+        .from('direct_messages')
+        .select('*', { count: 'exact', head: true })
+        .in('conversation_id', convIds)
+        .neq('sender_id', user.id)
+        .eq('is_read', false);
+
+    return count || 0;
+}

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { getPostById, applyToPost, updatePostStatus, deletePost, createNotification, type DBSkill } from '@/lib/supabase/queries';
 import { createClient } from '@/lib/supabase/client';
-import ThreadedComments from '@/components/ThreadedComments';
+
 import styles from './page.module.css';
 
 interface PostDetail {
@@ -172,8 +172,7 @@ export default function PostDetailPage() {
                         </div>
                     </div>
 
-                    {/* Comments Thread Section */}
-                    <ThreadedComments postId={post.id} postAuthorId={post.author.id} />
+
                 </div>
             </div>
 
@@ -191,9 +190,7 @@ export default function PostDetailPage() {
                 <div className={styles.sidebarScrollArea}>
                     {/* Compact Action Bar */}
                     <div className={styles.actionBar}>
-                        <Link href={`/board/${post.id}/chat`} className={styles.actionBtn}>
-                            💬 チャット
-                        </Link>
+
                         {currentUserId === post.author.id && (
                             <>
                                 <Link href={`/board/${post.id}/applications`} className={styles.actionBtn}>
