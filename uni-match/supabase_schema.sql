@@ -291,7 +291,8 @@ insert into public.skills (name, category) values
   ('機械学習', 'data'),
   ('データ分析', 'data'),
   ('プロジェクト管理', 'other'),
-  ('プレゼン', 'other')
+  ('プレゼン', 'other'),
+  ('その他', 'other')
 on conflict (name) do nothing;
 
 -- ============================================================
