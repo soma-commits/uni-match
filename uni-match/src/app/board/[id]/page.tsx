@@ -191,9 +191,6 @@ export default function PostDetailPage() {
                 <div className={styles.sidebarScrollArea}>
                     {/* Compact Action Bar */}
                     <div className={styles.actionBar}>
-                        <Link href={`/board/${post.id}/chat`} className={styles.actionBtn}>
-                            💬 チャット
-                        </Link>
 
                         {currentUserId === post.author.id && (
                             <>
