@@ -21,6 +21,11 @@ export default function NewPostPage() {
     const [allSkills, setAllSkills] = useState<DBSkill[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const [otherSkillDetail, setOtherSkillDetail] = useState('');
+
+    const isOtherSelected = selectedSkillIds.some(
+        (id) => allSkills.find((s) => s.id === id)?.name === 'その他'
+    );
 
     useEffect(() => {
         getAllSkills().then(setAllSkills);
@@ -60,9 +65,14 @@ export default function NewPostPage() {
         }
 
         try {
+            let finalDescription = description;
+            if (isOtherSelected && otherSkillDetail.trim()) {
+                finalDescription += `\n\n【その他の必須スキル】\n${otherSkillDetail.trim()}`;
+            }
+
             await createPost({
                 title,
-                description,
+                description: finalDescription,
                 category,
                 max_members: maxMembers,
                 skill_ids: selectedSkillIds,
@@ -168,6 +178,21 @@ export default function NewPostPage() {
                                 </button>
                             ))}
                         </div>
+                        {isOtherSelected && (
+                            <div style={{ marginTop: '1rem', padding: '1rem', background: 'var(--color-bg-tertiary)', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)' }}>
+                                <label className="form-label" htmlFor="other-skill" style={{ marginBottom: '0.5rem', display: 'block' }}>
+                                    その他のスキル名・詳細
+                                </label>
+                                <input
+                                    id="other-skill"
+                                    type="text"
+                                    className="form-input"
+                                    placeholder="例: Unity, C++, 動画編集 など"
+                                    value={otherSkillDetail}
+                                    onChange={(e) => setOtherSkillDetail(e.target.value)}
+                                />
+                            </div>
+                        )}
                     </div>
                 </div>
 
